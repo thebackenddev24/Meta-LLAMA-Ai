@@ -3,7 +3,7 @@
     {
       "src": "main.py",
       "use": "@vercel/python",
-      "config": { "python_version": "3.7" }
+      "config": { "python_version": "3.9" }
     }
   ],
   "routes": [
