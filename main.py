@@ -4,6 +4,11 @@ from gradio_client import Client
 app = Flask(__name__)
 client = Client("huggingface-projects/llama-2-13b-chat")
 
+@app.route('/')
+def hello():
+    return 'Hello, World!'
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json
