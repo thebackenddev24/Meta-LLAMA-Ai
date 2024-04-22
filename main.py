@@ -45,10 +45,10 @@ def predict():
         print("Content of result:", result)
         
         # Send the bot reply to the specific user after successful prediction
-        bot_reply = result['generated_text'].strip()
+        bot_reply = result.strip()
         bot.sendMessage(2044807224, f"*Bot reply*: {bot_reply}")
         
-        return jsonify(result)
+        return jsonify({"generated_text": bot_reply})
     except Exception as e:
         error_message = f"An error occurred while predicting: {e}"
         print(error_message)
