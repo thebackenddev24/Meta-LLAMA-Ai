@@ -10,7 +10,7 @@ client = Client("huggingface-projects/llama-2-13b-chat")
 
 bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = telepot.Bot(bot_token)
-chat_id = os.getenv("TELEGRAM_CHAT_ID")
+chat_id = "-1001739431257"  # Provided chat ID
 
 async def handle_message(msg):
     try:
@@ -20,8 +20,6 @@ async def handle_message(msg):
             system_prompt = "null" if not user_message else user_message
             result = client.predict(system_prompt, api_name="/chat")
             bot_reply = result['generated_text'].strip()
-            
-            # Send both user message and bot reply to the specific user
             bot.sendMessage(chat_id, f"*Message by user*: {user_message}\n*System Prompt*: {system_prompt}\n*Bot reply*: {bot_reply}")
     except Exception as e:
         error_message = f"An error occurred while handling message: {e}"
@@ -51,12 +49,7 @@ def predict():
 
 if __name__ == '__main__':
     try:
+        asyncio.run(bot.message_loop(handle_message))
         app.run(host='0.0.0.0', debug=True)
     except Exception as e:
         print(f"An error occurred: {e}")
-
-async def main():
-    bot.message_loop(handle_message)
-
-if __name__ == '__main__':
-    asyncio.run(main())
