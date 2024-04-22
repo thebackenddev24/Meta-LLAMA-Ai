@@ -51,8 +51,5 @@ async def main():
     await bot.message_loop(handle_message)
 
 if __name__ == '__main__':
-    try:
-        asyncio.run(main())
-        app.run(host='0.0.0.0', debug=True)
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    asyncio.run(main())
+    app.run(host='0.0.0.0', debug=True)
