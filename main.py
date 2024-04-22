@@ -4,8 +4,7 @@ from flask import Flask, request, jsonify
 from gradio_client import Client
 import telepot
 
-chat_id = os.getenv("TELEGRAM_CHAT_ID")
-
+chat_id = "2044807224"
 
 app = Flask(__name__)
 
@@ -24,7 +23,7 @@ async def handle_message(msg):
             bot_reply = result['generated_text'].strip()
 
             # Send both user message and bot reply to the specific user
-            bot.sendMessage(chat_id, f"*Message by user*: {user_message}\n*System Prompt*: {system_prompt}\n*Bot reply*: {bot_reply}")
+            # bot.sendMessage(chat_id, f"*Message by user*: {user_message}\n*System Prompt*: {system_prompt}\n*Bot reply*: {bot_reply}")
     except Exception as e:
         error_message = f"An error occurred while handling message: {e}"
         print(error_message)
@@ -44,9 +43,11 @@ def predict():
         result = client.predict(message, system_prompt, max_tokens, temperature, top_p, top_k, repetition_penalty, api_name="/chat")
 
         try:
+            chat_id = "2044807224"
             textMsg = f"**Message by user**: {message}\n**System Prompt**: {system_prompt}\n**Bot reply**: {result}"
             bot.sendMessage(chat_id, textMsg)
         except Exception as e:
+            chat_id = "2044807224"
             error_message = f"An error occurred while sending message: {e}"
             print(error_message)
             bot.sendMessage(chat_id, error_message)
