@@ -47,9 +47,12 @@ def predict():
         bot.sendMessage(chat_id, error_message)
         return jsonify({"error": str(e)})
 
+async def main():
+    await bot.message_loop(handle_message)
+
 if __name__ == '__main__':
     try:
-        asyncio.run(bot.message_loop(handle_message))
+        asyncio.run(main())
         app.run(host='0.0.0.0', debug=True)
     except Exception as e:
         print(f"An error occurred: {e}")
