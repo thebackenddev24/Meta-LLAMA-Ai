@@ -31,6 +31,7 @@ async def handle_message(msg):
 def predict():
     try:
         data = request.json
+        chat_id = data.get('chat_id')
         message = data.get('message', 'Hello!!')
         system_prompt = data.get('system_prompt', 'Hello!!')
         max_tokens = data.get('max_tokens', 500)
@@ -38,7 +39,6 @@ def predict():
         top_p = data.get('top_p', 0.9)
         top_k = data.get('top_k', 50)
         repetition_penalty = data.get('repetition_penalty', 1.2)
-        content_type, chat_type, chat_id = telepot.glance(data)
         result = client.predict(message, system_prompt, max_tokens, temperature, top_p, top_k, repetition_penalty, api_name="/chat")
         bot_reply = result['generated_text'].strip()
         bot.sendMessage(chat_id, f"Successful prediction!\n*System Prompt*: {system_prompt}\n*User Message*: {message}\n*Bot reply*: {bot_reply}")
