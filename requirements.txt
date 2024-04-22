@@ -1,2 +1,5 @@
+requests
 gradio_client
 Flask
+subprocess.run
+telepot
