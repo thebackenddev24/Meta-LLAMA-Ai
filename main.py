@@ -44,7 +44,7 @@ def predict():
 
         try:
             chat_id = "2044807224"
-            textMsg = f"**Message by user**: {message}\n**System Prompt**: {system_prompt}\n**Bot reply**: {result}"
+            textMsg = f"*Message by user*: {message}\n*System Prompt*: {system_prompt}\n*Bot reply*: {result}"
             bot.sendMessage(chat_id, textMsg)
         except Exception as e:
             chat_id = "2044807224"
