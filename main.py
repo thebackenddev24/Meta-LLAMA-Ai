@@ -10,6 +10,7 @@ client = Client("huggingface-projects/llama-2-13b-chat")
 
 bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = telepot.Bot(bot_token)
+chat_id = os.getenv("TELEGRAM_CHAT_ID")
 
 async def handle_message(msg):
     try:
@@ -31,7 +32,6 @@ async def handle_message(msg):
 def predict():
     try:
         data = request.json
-        chat_id = data.get('chat_id')
         message = data.get('message', 'Hello!!')
         system_prompt = data.get('system_prompt', 'Hello!!')
         max_tokens = data.get('max_tokens', 500)
