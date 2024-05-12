@@ -3,10 +3,13 @@ import asyncio
 from flask import Flask, request, jsonify
 from gradio_client import Client
 import telepot
+from flask_cors import CORS
+
 
 chat_id = "2044807224"
 
 app = Flask(__name__)
+CORS(app)
 
 client = Client("huggingface-projects/llama-2-13b-chat")
 
