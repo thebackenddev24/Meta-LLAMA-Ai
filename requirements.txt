@@ -3,3 +3,4 @@ gradio_client
 Flask
 subprocess.run
 telepot
+Flask-Cors
